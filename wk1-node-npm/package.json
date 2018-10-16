@@ -1,0 +1,12 @@
+{
+  "name": "wk1-node-npm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "test": "jest --watch --noStackTrace"
+  },
+  "dependencies": {
+    "jest": "^23.6.0"
+  }
+}
