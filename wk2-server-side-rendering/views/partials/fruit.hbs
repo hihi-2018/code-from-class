@@ -1,0 +1,14 @@
+{{#if gotFruit}}
+<p>
+Here is a list of fruit:
+</p>
+<ul>
+  {{#each fruit}}
+  <li>{{name}}</li>
+  {{/each}}
+</ul>
+{{else}}
+<p>
+No fruit :(
+</p>
+{{/if}}
