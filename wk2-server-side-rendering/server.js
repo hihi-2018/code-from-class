@@ -17,7 +17,7 @@ server.set('view engine', 'hbs')
 // })
 
 server.get('/', function(req, res){
-  res.render('home', {})
+  res.render('home', { name: req.query.name })
 })
 
 module.exports = server
