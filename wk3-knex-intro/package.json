@@ -5,7 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "node index.js",
-    "promises": "node promises.js"
+    "promises": "node promises.js",
+    "p_and_c": "node promises_and_callbacks.js"
   },
   "dependencies": {
     "knex": "^0.15.2",
