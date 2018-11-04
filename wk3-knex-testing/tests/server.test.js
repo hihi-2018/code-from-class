@@ -14,10 +14,12 @@ jest.mock('../db', () => ({
 const server = require('../server')
 
 test('GET /', () => {
+
   return request(server)
     .get('/')
     .expect(200)
     .then((res) => {
+      
       const $ = cheerio.load(res.text)
       const firstLiText = $('li').first().text()
       expect(firstLiText).toBe('test user 2 (test2@user.nz)')
