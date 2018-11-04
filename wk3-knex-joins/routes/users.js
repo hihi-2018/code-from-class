@@ -11,7 +11,8 @@ router.get('/', (req, res) => {
       return users
     })
     .then(users => {
-      res.render('index', {users: users})
+      // res.render('index', {users: users})
+      res.json(users)
     })
     .catch(err => {
       res.status(500).send('DATABASE ERROR: ' + err.message)

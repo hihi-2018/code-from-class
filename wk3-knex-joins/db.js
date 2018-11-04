@@ -20,7 +20,18 @@ function getUser (id, testConn) {
 
 function getUsersAndVehicles (testConn) {
   const conn = testConn || connection
+  console.log(conn('users')
+  .join('vehicles', 'vehicles.user_id', 'users.id')
+  .select('*', 'users.id AS uid', 'vehicles.id AS vid').toString())
   return conn('users')
   .join('vehicles', 'vehicles.user_id', 'users.id')
-  .select()
+  .select('*', 'users.id AS id')
+  // .then(removeIds)
+}
+
+function removeIds(data) {
+  return data.map(item => {
+    delete item.id
+    return item
+  })
 }
