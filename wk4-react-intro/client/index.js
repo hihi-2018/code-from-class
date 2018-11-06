@@ -1,38 +1,40 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-function helloTemplate (props) {
-  console.log('parent props', props)
-  return (
-    <div>
-      hello {props.name}
-      <ChildTemplate parentName={props.name} fruit={props.fruit}/>
-    </div>
-  )
-}
+import App from './components/App'
 
-function ChildTemplate(props) {
-  console.log('child props', props)
-  return (
-    <div>
-      <p>Hello from the child template... {props.parentName}</p>
-      <Fruit fruit={props.fruit}/>
-    </div>
-  )
-}
+// function App (props) {
+//   console.log('parent props', props)
+//   return (
+//     <div>
+//       hello {props.name}
+//       <Child parentName={props.name} fruit={props.fruit}/>
+//     </div>
+//   )
+// }
 
-function Fruit(props) {
-  return (
-    <ul>
-      {props.fruit.map(item => {
-        return <li>{item}</li>
-      })}
-    </ul>
-  )
-}
+// function Child(props) {
+//   console.log('child props', props)
+//   return (
+//     <div>
+//       <p>Hello from the child template... {props.parentName}</p>
+//       <Fruit fruit={props.fruit}/>
+//     </div>
+//   )
+// }
+
+// function Fruit(props) {
+//   return (
+//     <ul>
+//       {props.fruit.map(item => {
+//         return <li>{item}</li>
+//       })}
+//     </ul>
+//   )
+// }
 
 const data = {name: 'humans', fruit: ['apples', 'oranges', 'bananas', 'pears']}
-const view = helloTemplate(data)
+// const view = App(data)
 
 // Old way with Handlebars + Express
 // Compiles template AND sends as response
@@ -40,4 +42,5 @@ const view = helloTemplate(data)
 
 const placeToMount = document.getElementById('root')
 
-ReactDOM.render(view, placeToMount)
+// ReactDOM.render(<App name={data.name} fruit={data.fruit} />, placeToMount)
+ReactDOM.render(<App {...data} />, placeToMount)
