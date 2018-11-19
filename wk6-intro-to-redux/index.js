@@ -1,79 +1,42 @@
-import {createStore} from 'redux'
+import {createStore, combineReducers} from 'redux'
 
-const initialWombatState = {
-  wombats: ['Gertrude', 'Bartholemew']
-}
+import wombatReducer from './reducers/wombats'
+import aardvarkReducer from './reducers/aardvarks'
 
-const wombatReducer = (state = initialWombatState, action) => {
+import {addWombatAction, updateWombatAction} from './actions/wombats'
 
-  // action_looks_like = {
-  //   type: 'ADD_WOMBAT',
-  //   wombat: 'Harrison'
-  // }
-
-  // action_looks_like = {
-  //   type: 'DEL_WOMBAT',
-  //   wombat: 'Bartholemew'
-  // }
-
-  // if(action.type == 'ADD_WOMBAT') {
-  //   return {
-  //     wombats: [...state.wombats, action.wombat]
-  //   }
-  // } else if(action.type == 'DEL_WOMBAT') {
-  //   return {
-  //     wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
-  //   }
-  // } else {
-  //   return state
-  // }
-
-
-  switch (action.type) {
-    case 'ADD_WOMBAT':
-      return {
-        // let newWombats = [...state.wombat]
-        // newWombats.push(action.wombat)
-        wombats: [...state.wombats, action.wombat]
-      }
-    case 'DEL_WOMBAT':
-      return {
-        wombats: state.wombats.filter((wombat) => wombat !== action.wombat)
-      }
-    default:
-      return state
-  }
-}
-
-const store = createStore(wombatReducer,
+const store = createStore(combineReducers({
+    wombats: wombatReducer,
+    aardvarks: aardvarkReducer
+  }),
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 )
 
 document.addEventListener('DOMContentLoaded', () => {
   render()
   store.subscribe(render)
-  store.dispatch(
-    {
-    type: 'ADD_WOMBAT',
-    wombat: 'Harrison'
-    }
-  )
 })
 
 function render () {
   const state = store.getState()
   const wombats = state.wombats
   document.getElementById('app').innerHTML = renderWombats(wombats)
+
+  wombats.forEach(wombat => {
+    document.getElementById("update-" + wombat).addEventListener('click', () => {
+      let newWombat = document.getElementById('updated-' + wombat).value
+
+      store.dispatch(updateWombatAction(wombat, newWombat))
+    })
+  })
 }
 
 function renderWombats (wombats) {
   let output = '<ul>'
   for (const wombat of wombats) {
-    output += `<li>${wombat}</li>`
+    output += "<li>" + wombat + "<input id='updated-" + wombat + "' type='text'/><button id='update-" + wombat + "'>Save</button></li>"
   }
   output += '</ul>'
-
-  console.log('Rendering: ', output)
 
   return output
 

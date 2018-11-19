@@ -19,5 +19,8 @@
     "redux": "^3.7.2",
     "webpack": "^3.11.0",
     "webpack-dev-server": "^2.11.1"
+  },
+  "dependencies": {
+    "jest": "^23.6.0"
   }
 }
