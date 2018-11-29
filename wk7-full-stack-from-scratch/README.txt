@@ -69,3 +69,39 @@ Request Body:
 
 Response Body:
 {}
+
+
+Global State look like this:
+
+{
+  page: 'listing', #  OR cart
+  beers: [
+    {
+      id: 1,
+      name: 'HBIB Ginger Fusion',
+      brewery: 'Hawkes Bay Independent Brewery',
+      country: 'New Zealand',
+      style: 'Ginger Beer',
+      abv: '5%'
+    }, {
+      id: 2,
+      name: 'Mangose & Melons',
+      brewery: 'Baylands Brewery',
+      country: 'New Zealand',
+      style: 'Fruit Gose',
+      abv: '4%'
+    }
+  ],
+  cart: [{
+      beer: {
+        id: 1,
+        name: 'HBIB Ginger Fusion',
+        brewery: 'Hawkes Bay Independent Brewery',
+        country: 'New Zealand',
+        style: 'Ginger Beer',
+        abv: '5%'
+      },
+      quantity: 2
+    }]
+
+}

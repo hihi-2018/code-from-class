@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "dev": "webpack --mode='development' --watch & node server",
     "start": "node server"
   },
   "keywords": [],
@@ -12,6 +13,20 @@
   "dependencies": {
     "express": "^4.16.4",
     "knex": "^0.15.2",
-    "sqlite3": "^4.0.4"
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-redux": "^5.1.1",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "sqlite3": "^4.0.4",
+    "superagent": "^4.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.1.6",
+    "@babel/preset-env": "^7.1.6",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.4",
+    "webpack": "^4.26.1",
+    "webpack-cli": "^3.1.2"
   }
 }
